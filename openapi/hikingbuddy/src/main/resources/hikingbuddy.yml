@@ -1,0 +1,1013 @@
+openapi: 3.0.1
+info:
+  title: GroupProjectApi
+  version: v1
+paths:
+  /api/Events/{eventID}:
+    get:
+      tags:
+        - Events
+      parameters:
+        - name: eventID
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/EventDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EventDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/EventDto"
+    put:
+      tags:
+        - Events
+      parameters:
+        - name: eventID
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EventForm"
+          text/json:
+            schema:
+              $ref: "#/components/schemas/EventForm"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/EventForm"
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/EventDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EventDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/EventDto"
+    delete:
+      tags:
+        - Events
+      parameters:
+        - name: eventID
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/EventDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EventDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/EventDto"
+  /api/Events/allEvents/{email}:
+    get:
+      tags:
+        - Events
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/EventDto"
+  /api/Events/allEvents:
+    get:
+      tags:
+        - Events
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/EventDto"
+
+  /api/Events/creator/{eventID}:
+    get:
+      tags:
+        - Events
+      parameters:
+        - name: eventID
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/UserPublicDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserPublicDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/UserPublicDto"
+  /api/Events:
+    post:
+      tags:
+        - Events
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EventForm"
+          text/json:
+            schema:
+              $ref: "#/components/schemas/EventForm"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/EventForm"
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/EventDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EventDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/EventDto"
+  /api/Friends/all:
+    get:
+      tags:
+        - Friends
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/FriendDto"
+  /api/Friends/accepted/{email}:
+    get:
+      tags:
+        - Friends
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/FriendDto"
+  /api/Friends/accepted/users/{email}:
+    get:
+      tags:
+        - Friends
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserDto"
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserDto"
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserDto"
+  /api/Friends/incoming:
+    get:
+      tags:
+        - Friends
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/FriendDto"
+  /api/Friends/incoming/users/{email}:
+    get:
+      tags:
+        - Friends
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserDto"
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserDto"
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserDto"
+  /api/Friends/outgoing:
+    get:
+      tags:
+        - Friends
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/FriendDto"
+  /api/Friends/outgoing/users/{email}:
+    get:
+      tags:
+        - Friends
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserDto"
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserDto"
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserDto"
+  /api/Friends/{email1}/{email2}:
+    get:
+      tags:
+        - Friends
+      parameters:
+        - name: email1
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+        - name: email2
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/FriendDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FriendDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/FriendDto"
+  /api/Friends/create/{email}:
+    post:
+      tags:
+        - Friends
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/FriendDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FriendDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/FriendDto"
+  /api/Friends/accept/{email}:
+    post:
+      tags:
+        - Friends
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/FriendDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FriendDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/FriendDto"
+  /api/Friends/{email}:
+    delete:
+      tags:
+        - Friends
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/FriendDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FriendDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/FriendDto"
+  /api/UserEvents/{eventID}:
+    get:
+      tags:
+        - UserEvents
+      parameters:
+        - name: eventID
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: boolean
+            application/json:
+              schema:
+                type: boolean
+            text/json:
+              schema:
+                type: boolean
+    post:
+      tags:
+        - UserEvents
+      parameters:
+        - name: eventID
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/UserEventDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserEventDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/UserEventDto"
+    delete:
+      tags:
+        - UserEvents
+      parameters:
+        - name: eventID
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/UserEventDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserEventDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/UserEventDto"
+  /api/UserEvents/users/{eventID}:
+    get:
+      tags:
+        - UserEvents
+      parameters:
+        - name: eventID
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserPublicDto"
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserPublicDto"
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserPublicDto"
+  /api/UserEvents/events/{email}:
+    get:
+      tags:
+        - UserEvents
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EventDto"
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EventDto"
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EventDto"
+  /api/Users/{email}:
+    get:
+      tags:
+        - Users
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/UserDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/UserDto"
+  /api/Users/public/{email}:
+    get:
+      tags:
+        - Users
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/UserPublicDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserPublicDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/UserPublicDto"
+  /api/Users/login:
+    post:
+      tags:
+        - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AuthenticateRequest"
+          text/json:
+            schema:
+              $ref: "#/components/schemas/AuthenticateRequest"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/AuthenticateRequest"
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/AuthenticateResponse"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthenticateResponse"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/AuthenticateResponse"
+  /api/Users:
+    post:
+      tags:
+        - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+          text/json:
+            schema:
+              $ref: "#/components/schemas/User"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/UserDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/UserDto"
+    put:
+      tags:
+        - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserDto"
+          text/json:
+            schema:
+              $ref: "#/components/schemas/UserDto"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/UserDto"
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/UserDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/UserDto"
+    delete:
+      tags:
+        - Users
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/UserDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/UserDto"
+  /api/Users/getallusers/{zip}:
+    post:
+      tags:
+        - Users
+      parameters:
+        - name: zip
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/UserPublicDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserPublicDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/UserPublicDto"
+components:
+  schemas:
+    EventDto:
+      required:
+        - creator
+        - eventDate
+        - eventID
+        - location
+        - title
+      type: object
+      properties:
+        eventID:
+          type: string
+        creator:
+          type: string
+        dateCreated:
+          type: string
+          format: date-time
+        eventDate:
+          type: string
+          format: date-time
+        title:
+          type: string
+        description:
+          type: string
+          format: string
+          nullable: true
+        location:
+          type: string
+          format: postal-code
+      additionalProperties: false
+    EventForm:
+      required:
+        - eventDate
+        - location
+        - title
+      type: object
+      properties:
+        eventDate:
+          type: string
+          format: date-time
+        title:
+          type: string
+        description:
+          type: string
+          format: string
+          nullable: true
+        location:
+          type: string
+          format: postal-code
+      additionalProperties: false
+    UserPublicDto:
+      required:
+        - dateOfBirth
+        - email
+        - location
+        - name
+        - pets
+        - skillLevel
+      type: object
+      properties:
+        email:
+          maxLength: 30
+          minLength: 0
+          type: string
+          format: email
+        name:
+          maxLength: 30
+          minLength: 0
+          type: string
+        description:
+          type: string
+          format: string
+          nullable: true
+        dateOfBirth:
+          type: string
+          format: date
+        skillLevel:
+          maximum: 5
+          minimum: 1
+          type: integer
+          format: int32
+        experience:
+          type: string
+          format: string
+          nullable: true
+        location:
+          maxLength: 6
+          minLength: 0
+          type: string
+          format: postal-code
+        pets:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        profilePicture:
+          maxLength: 100
+          minLength: 0
+          type: string
+          format: uri
+          nullable: true
+      additionalProperties: false
+    FriendDto:
+      required:
+        - friendStatus
+        - sourceUser
+        - targetUser
+      type: object
+      properties:
+        sourceUser:
+          type: string
+        targetUser:
+          type: string
+        friendStatus:
+          maximum: 1
+          minimum: 0
+          type: integer
+          format: int32
+        requestedAt:
+          type: string
+          format: date-time
+      additionalProperties: false
+    UserDto:
+      required:
+        - createdAt
+        - dateOfBirth
+        - email
+        - location
+        - name
+        - pets
+        - phoneNumber
+        - skillLevel
+        - updatedAt
+      type: object
+      properties:
+        email:
+          maxLength: 30
+          minLength: 0
+          type: string
+          format: email
+        name:
+          maxLength: 30
+          minLength: 0
+          type: string
+        dateOfBirth:
+          type: string
+          format: date
+        skillLevel:
+          maximum: 5
+          minimum: 1
+          type: integer
+          format: int32
+        location:
+          maxLength: 6
+          minLength: 0
+          type: string
+          format: postal-code
+        phoneNumber:
+          maxLength: 12
+          minLength: 0
+          type: string
+          format: tel
+        pets:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        description:
+          type: string
+          format: string
+          nullable: true
+        experience:
+          type: string
+          format: string
+          nullable: true
+        profilePicture:
+          maxLength: 100
+          minLength: 0
+          type: string
+          format: uri
+          nullable: true
+      additionalProperties: false
+    UserEventDto:
+      required:
+        - eventID
+        - user
+      type: object
+      properties:
+        eventID:
+          type: string
+        user:
+          type: string
+          format: email
+      additionalProperties: false
+    AuthenticateRequest:
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      additionalProperties: false
+    AuthenticateResponse:
+      required:
+        - token
+        - user
+      type: object
+      properties:
+        user:
+          $ref: "#/components/schemas/UserDto"
+        token:
+          type: string
+      additionalProperties: false
+    User:
+      required:
+        - dob
+        - email
+        - fullname
+        - location
+        - pet
+        - phoneNum
+        - pwd
+        - skillLvl
+      type: object
+      properties:
+        email:
+          maxLength: 30
+          minLength: 0
+          type: string
+          format: email
+        pwd:
+          maxLength: 60
+          minLength: 0
+          type: string
+        fullname:
+          maxLength: 30
+          minLength: 0
+          type: string
+        dob:
+          type: string
+          format: date
+        skillLvl:
+          maximum: 5
+          minimum: 1
+          type: integer
+          format: int32
+        phoneNum:
+          maxLength: 11
+          minLength: 0
+          type: string
+          format: tel
+        pet:
+          type: boolean
+        location:
+          maxLength: 6
+          minLength: 0
+          type: string
+          format: postal-code
+        descript:
+          type: string
+          format: string
+          nullable: true
+        experience:
+          type: string
+          format: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date
+        profilePic:
+          maxLength: 100
+          minLength: 0
+          type: string
+          format: uri
+          nullable: true
+      additionalProperties: false
